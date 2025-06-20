@@ -63,7 +63,7 @@ uv run scripts/test_policy_server.py
 Before submitting your policy for RoboArena evaluations, we recommend you test it in simulation, to make sure that the behavior is reasonable.
 
 To evaluate your policy in simulation, follow the instructions for serving it on a remote server above. 
-Then, check out the [DROID simulated evaluation repo](XXX) and follow the instructions there.
+Then, check out the [DROID simulated evaluation repo](https://github.com/arhanjain/sim-evals) and follow the instructions there.
 
 
 ## Training VLAs on DROID
