@@ -2,7 +2,7 @@
 
 ![RoboArena teaser](docs/roboarena_teaser.jpeg)
 
-RoboArena is a distributed, scalable benchmark for generalist robot policies. For more details about RoboArena, please check our [website](XXX).
+RoboArena is a distributed, scalable benchmark for generalist robot policies. For more details about RoboArena, please check our [website](https://robo-arena.github.io/).
 
 This repo contains example code and instructions for:
 (1) training VLA policies on the DROID dataset
