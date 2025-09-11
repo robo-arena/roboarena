@@ -22,6 +22,8 @@ class PolicyServerConfig:
     needs_stereo_camera: bool = False
     # Whether or not the unique eval session id should be sent (e.g. for policies that want to keep track of history).
     needs_session_id: bool = False
+    # Whether the server wants an encrypted connection (i.e., use wss) or not (use ws)
+    use_wss: bool = False
     # Which action space to use.
     action_space: str = "joint_position"  # can be in ["joint_position", "joint_velocity"]
 
