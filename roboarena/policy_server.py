@@ -82,8 +82,16 @@ class WebsocketPolicyServer:
         while True:
             try:
                 obs = msgpack_numpy.unpackb(await websocket.recv())
-                action = self._policy.infer(obs)
-                await websocket.send(packer.pack(action))
+                
+                endpoint = obs["endpoint"]
+                del obs["endpoint"]
+                if endpoint == "reset":
+                    self._policy.reset(obs)
+                    to_return = "reset successful"
+                else:
+                    action = self._policy.infer(obs)
+                    to_return = packer.pack(action)
+                await websocket.send(to_return)
             except websockets.ConnectionClosed:
                 logging.info(f"Connection from {websocket.remote_address} closed")
                 break
@@ -103,7 +111,7 @@ if __name__ == "__main__":
         def infer(self, obs):
             return np.zeros((1, 8), dtype=np.float32)
         
-        def reset(self):
+        def reset(self, reset_info):
             pass
     
     logging.basicConfig(level=logging.INFO)

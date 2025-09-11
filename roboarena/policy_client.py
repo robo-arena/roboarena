@@ -42,6 +42,9 @@ class WebsocketClientPolicy(BasePolicy):
 
     @override
     def infer(self, obs: Dict) -> Dict:  # noqa: UP006
+        # Notify server that we're calling the infer endpoint (as opposed to the reset endpoint)
+        obs["endpoint"] = "infer"
+
         data = self._packer.pack(obs)
         self._ws.send(data)
         response = self._ws.recv()
@@ -51,13 +54,18 @@ class WebsocketClientPolicy(BasePolicy):
         return msgpack_numpy.unpackb(response)
 
     @override
-    def reset(self) -> None:
-        pass
+    def reset(self, reset_info: Dict) -> None:
+        # Notify server that we're calling the reset endpoint (as opposed to the infer endpoint)
+        reset_info["endpoint"] = "reset"
 
+        data = self._packer.pack(reset_info)
+        self._ws.send(data)
+        response = self._ws.recv()
+        return response
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     client = WebsocketClientPolicy()
-    client.reset()
     actions = client.infer({})
     print(f"Actions received: {actions}")
+    client.reset({})
