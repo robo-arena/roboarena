@@ -14,6 +14,7 @@ class BasePolicy(abc.ABC):
                 - observation/exterior_image_{i}_right: (H, W, 3) if needs_stereo_camera is True
                 - session_id: (1,) if needs_session_id is True
                 - observation/joint_position: (7,)
+                - observation/cartesian_position: (6,)
                 - observation/gripper_position: (1,)
                 - prompt: str, the natural language task instruction for the policy
             
