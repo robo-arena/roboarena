@@ -5,9 +5,9 @@
 RoboArena is a distributed, scalable benchmark for generalist robot policies. For more details about RoboArena, please check our [website](https://robo-arena.github.io/).
 
 This repo contains example code and instructions for:
-(1) training VLA policies on the DROID dataset
-(2) serving your policy via a remote policy server, to make it ready for RoboArena evaluation
-(3) evaluating your policies in simulated environments before submitting them for RoboArena eval
+(1) serving your policy via a remote policy server, to make it ready for RoboArena evaluation
+(2) evaluating your policies in simulated environments before submitting them for RoboArena eval
+(3) links to openpi VLA starter training code
 
 
 ## Getting Started
