@@ -65,3 +65,10 @@ class WebsocketClientPolicy(BasePolicy):
         self._ws.send(data)
         response = self._ws.recv()
         return response
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    client = WebsocketClientPolicy()
+    actions = client.infer({})
+    print(f"Actions received: {actions}")
+    client.reset({})
