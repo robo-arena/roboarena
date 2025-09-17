@@ -10,11 +10,12 @@ class BasePolicy(abc.ABC):
         Interface:
             Observation:
                 - observation/wrist_image_left: (H, W, 3) if needs_wrist_camera is True
+                - observation/wrist_image_right: (H, W, 3) if needs_wrist_camera is True and needs_stereo_camera is True
                 - observation/exterior_image_{i}_left: (H, W, 3) if n_external_cameras >= 1
                 - observation/exterior_image_{i}_right: (H, W, 3) if needs_stereo_camera is True
                 - session_id: (1,) if needs_session_id is True
                 - observation/joint_position: (7,)
-                - observation/cartesian_position: (6,)
+                - observation/gripper_position: (6,)
                 - observation/gripper_position: (1,)
                 - prompt: str, the natural language task instruction for the policy
             
