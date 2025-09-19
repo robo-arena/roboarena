@@ -43,14 +43,17 @@ def test_policy_server():
         raise e
     
     assert server_config.n_external_cameras in [0, 1, 2]
-    assert server_config.action_space in ["joint_position", "joint_velocity"]
+    assert server_config.action_space in ["joint_position", "joint_velocity", "cartesian_position", "cartesian_velocity"]
 
     # Make sure we can get a response
     obs = _make_dummy_observation(server_config)
     actions = client.infer(obs)
     assert isinstance(actions, np.ndarray)
     assert len(actions.shape) == 2
-    assert actions.shape[-1] == 8
+    if "joint" in server_config.action_space:
+        assert actions.shape[-1] == 8
+    else:
+        assert actions.shape[-1] == 7
 
     # At the end of the trajectory, reset will be called
     client.reset()
