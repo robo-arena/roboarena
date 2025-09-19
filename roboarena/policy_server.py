@@ -23,7 +23,7 @@ class PolicyServerConfig:
     # Whether or not the unique eval session id should be sent (e.g. for policies that want to keep track of history).
     needs_session_id: bool = False
     # Which action space to use.
-    action_space: str = "joint_position"  # can be in ["joint_position", "joint_velocity"]
+    action_space: str = "joint_position"  # can be in ["joint_position", "joint_velocity", "cartesian_position", "cartesian_velocity"]
 
 
 class WebsocketPolicyServer:
@@ -43,7 +43,7 @@ class WebsocketPolicyServer:
         - prompt: str, the natural language task instruction for the policy
     
       Action:
-        - action: (N, 8,), 7d joint action in specified action space + gripper position
+        - action: (N, 8,) or (N, 7,): either 7 movement actions (for joint action spaces) or 6 (for cartesian) plus one dimension for gripper position
                            --> all N actions will get executed on the robot before the server is queried again
 
     """
