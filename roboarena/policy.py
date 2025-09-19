@@ -20,7 +20,7 @@ class BasePolicy(abc.ABC):
                 - prompt: str, the natural language task instruction for the policy
             
             Action:
-                - action: (N, 8,), 7d joint action in specified action space + gripper position
+                - action: (N, 8,) or (N, 7,): either 7 movement actions (for joint action spaces) or 6 (for cartesian) plus one dimension for gripper position
                                 --> all N actions will get executed on the robot before the server is queried again
         """
 
