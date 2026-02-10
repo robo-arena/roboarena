@@ -22,6 +22,7 @@ class BasePolicy(abc.ABC):
             Action:
                 - action: (N, 8,) or (N, 7,): either 7 movement actions (for joint action spaces) or 6 (for cartesian) plus one dimension for gripper position
                                 --> all N actions will get executed on the robot before the server is queried again
+                - Note: return a dict wrapping the numpy actions (e.g., {"actions": actions})
         """
 
     def reset(self, reset_info: Dict) -> None:
