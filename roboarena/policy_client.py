@@ -69,6 +69,7 @@ class WebsocketClientPolicy(BasePolicy):
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     client = WebsocketClientPolicy()
-    actions = client.infer({})
+    actions_dict = client.infer({})
+    actions = actions_dict["actions"]
     print(f"Actions received: {actions}")
     client.reset({})
