@@ -47,7 +47,10 @@ def test_policy_server():
 
     # Make sure we can get a response
     obs = _make_dummy_observation(server_config)
-    actions = client.infer(obs)
+    actions_dict = client.infer(obs)
+    assert type(actions_dict) == dict
+    assert "actions" in actions_dict
+    actions = actions_dict["actions"]
     assert isinstance(actions, np.ndarray)
     assert len(actions.shape) == 2
     if "joint" in server_config.action_space:
