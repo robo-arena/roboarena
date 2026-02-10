@@ -45,6 +45,7 @@ class WebsocketPolicyServer:
       Action:
         - action: (N, 8,) or (N, 7,): either 7 movement actions (for joint action spaces) or 6 (for cartesian) plus one dimension for gripper position
                            --> all N actions will get executed on the robot before the server is queried again
+        - Note: policy should return a dict wrapping actions (e.g., {"actions": actions})
 
     """
 
