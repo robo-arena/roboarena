@@ -111,7 +111,7 @@ if __name__ == "__main__":
 
     class DummyPolicy(BasePolicy):
         def infer(self, obs):
-            return np.zeros((1, 8), dtype=np.float32)
+            return {"actions": np.zeros((1, 8), dtype=np.float32)}
         
         def reset(self, reset_info):
             pass
